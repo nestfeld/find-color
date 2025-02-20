@@ -180,7 +180,7 @@ body::after {
 .video--container{
     display: flex;
     flex-flow: column;
-    align-items: end;
+    align-items: center;
     margin-bottom: 2rem;
 }
 
