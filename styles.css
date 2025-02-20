@@ -27,7 +27,7 @@ body {
     height: 100vh; /* Высота на весь экран */
     padding: 1rem;
     position: relative; /* Нужно для позиционирования псевдоэлемента */
-    overflow: hidden;
+    overflow: auto;
 
 }
 
@@ -169,12 +169,12 @@ body::after {
         flex-flow: column;
     }
     html {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
 @media (max-width: 360px) {
     html {
-        font-size: 15px;
+        font-size: 13px;
     }
 }
