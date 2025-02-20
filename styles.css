@@ -27,8 +27,6 @@ body {
     height: 100vh; /* Высота на весь экран */
     padding: 1rem;
     position: relative; /* Нужно для позиционирования псевдоэлемента */
-    overflow: auto;
-
 }
 
 body::after {
