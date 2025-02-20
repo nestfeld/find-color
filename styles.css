@@ -95,10 +95,9 @@ body::after {
 
 #webcam {
     border: 0.5rem solid #97979736;
-    border-radius: 0.8rem;
+    border-radius: 0.8rem 0rem 0.8rem 0.8rem;
     transition: 0.3s ease;
     cursor: crosshair;
-    margin-bottom: 2rem;
 }
 #webcam:hover{
     border-color: rgba(227, 144, 35, 0.837);
@@ -177,23 +176,29 @@ body::after {
     }
 }
 
-.button {
-    position: absolute;
-    left: 0;
-    width: 3rem;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: rgba(100, 105, 255, 0.391);
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-.button:hover {
-    background-color: rgb(100, 105, 255);
+
+.video--container{
+    display: flex;
+    flex-flow: column;
+    align-items: end;
+    margin-bottom: 2rem;
 }
 
-.ico{
-    width: 100%;
+#switchCamera {
     color: white;
-    z-index: 999;
+    font-size: 1rem;
+    border-radius: 0.8rem 0.8rem 0rem 0rem;
+    border: #97979736;
+    background-color: #97979736;
+    width: 10rem;
+    transition: 0.3s ease;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+#switchCamera:hover ~ #webcam {
+    border-color: #4B4EE9;
+}
+
+#switchCamera:hover {
+    background-color: #4B4EE9;
 }
