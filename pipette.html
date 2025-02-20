@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Подключение CSS-->
+    <link rel="stylesheet" href="styles.css">
+    <!--Подключение шрифта Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <title>Find color</title>
+</head>
+<body>
+    <main class="main">
+        <div class="main--container">
+            <h1 class="main--title">
+                <span class="main--title_underline">Find</span>
+                <span class="main--title_highlight" id="highlightedText">color</span>
+            </h1>
+            <video class="main--video" id="webcam" autoplay></video>
+            <div class="main--color-description">
+                <fieldset  class="color-description--current-color">
+                    <legend>RGB & CMYK</legend>
+                    <div class="color-block" id="currentColorElement"></div>
+                    <div class="color-description--Rgb-Cymk-DescriptionBlock">
+                        <p><strong>RGB:</strong> <span id="rgbValue"></span></p>
+                        <p><strong>CMYK:</strong> <span id="cmykValue"></span></p>
+                    </div>
+                </fieldset>
+                <fieldset  class="color-description--ral-suitable-color">
+                    <legend>RAL</legend>
+                    <div class="color-block" id="ralColorElement"></div>
+                    <div>
+                        <p><strong>Название:</strong> <span id="ralName"></span></p>
+                        <p><strong>RAL код:</strong> <span id="ralCode"></span></p>
+                        <p><strong>RGB:</strong> <span id="ralToRgb"></span></p>
+                    </div>
+                </fieldset>
+            </div>
+            <p id="message">Скопированно!</p>
+        </div>
+    </main>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'inter';
+    color: white;
+}
+
+video {
+    background-color: rgb(17, 17, 17);
+}
+
+fieldset {
+    border: none;
+    font-weight: 700;
+}
+
+legend {
+    color: #9fa7ff;
+}
+
+body {
+    background: linear-gradient(to bottom, #0C0C0C, #251c93); /* Градиент сверху вниз */
+    background-attachment: fixed; /* Фон не двигается при скролле */
+    background-size: cover; /* Растягиваем на весь экран */
+    margin: 0;
+    height: 100vh; /* Высота на весь экран */
+    padding: 1rem;
+    position: relative; /* Нужно для позиционирования псевдоэлемента */
+    overflow: hidden;
+
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgb(72, 72, 72) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none; /* Чтобы сетка не мешала кликам */
+    z-index: 1;
+}
+
+.main{
+    position: relative;
+    z-index: 2;
+}
+
+.main--container{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.main--title{
+    font-size: 4rem;
+    font-weight: 900;
+    position: relative;
+    margin-bottom: 2rem
+}
+
+.main--title_highlight{
+    color: #4B4EE9;
+    position: relative;
+    display: inline-block;
+    transition: 0.4s ease;
+}
+
+.main--title_underline::after{
+    content: "";
+    display: block;
+    width: 48%;
+    height: 0.7rem; /* Толщина подчеркивания */
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo);
+    border-radius: 5px; /* Закругленные края */
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Расстояние от текста */
+    transition: 0.8s;
+}
+
+.main--title:hover  .main--title_underline::after {
+    width: 100%;
+}
+
+.main--title:hover {
+    cursor: pointer;
+}
+
+.active {
+    border: 0.5rem solid rgba(1, 255, 5, 0.857) !important; /* Оставляем стиль от клика, игнорируя ховер */
+    animation: shake 0.2s; 
+}
+
+#webcam {
+    border: 0.5rem solid #97979736;
+    border-radius: 0.8rem;
+    transition: 0.3s ease;
+    cursor: crosshair;
+    margin-bottom: 2rem;
+}
+#webcam:hover{
+    border-color: rgba(227, 144, 35, 0.837);
+}
+
+.main--color-description{
+    background-color: #97979736;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    font-weight: 300;
+    display: flex;
+    gap: 1rem;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.color-block{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 25%;
+    background-color: white;
+    cursor: pointer;
+    border: solid 2px rgba(0, 0, 0, 0.355);
+}
+
+.color-description--current-color{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #131313be;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.color-description--ral-suitable-color{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #131313be;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+#message{
+    color: rgb(65, 243, 65);
+    opacity: 0;  /* Изначально скрыто */
+    transition: opacity 0.2s ease-in-out;  /* Плавное изменение прозрачности */
+}
+
+#message.show {
+    opacity: 1;  /* При добавлении класса показывается */
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media (max-width: 768px) {
+    .main--video{
+        width: 100%;
+    }
+    .main--color-description{
+        flex-flow: column;
+    }
+    html {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 15px;
+    }
+}
