@@ -176,3 +176,24 @@ body::after {
         font-size: 13px;
     }
 }
+
+.button {
+    position: absolute;
+    left: 0;
+    width: 3rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(100, 105, 255, 0.391);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.button:hover {
+    background-color: rgb(100, 105, 255);
+}
+
+.ico{
+    width: 100%;
+    color: white;
+    z-index: 999;
+}
