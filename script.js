@@ -12,6 +12,9 @@ const ralName = document.getElementById('ralName');
 const ralCode = document.getElementById('ralCode');
 const ralToRgb = document.getElementById('ralToRgb');
 
+let currentStream = null;
+let useFrontCamera = true;
+
 // Функция для преобразования RGB в CMYK
 function rgbToCmyk(r, g, b) {
   const c = 1 - (r / 255);
@@ -50,19 +53,34 @@ function findNearestColor(r, g, b) {
   return closestColor;
 }
 
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  // Запрашиваем доступ к камере
-  navigator.mediaDevices.getUserMedia({ video: true })
-      .then(function (stream) {
-          // Привязываем видеопоток к элементу video
-          videoElement.srcObject = stream;
-      })
-      .catch(function (error) {
-          console.error('Ошибка доступа к камере: ', error);
-      });
-} else {
-  alert('Ваш браузер не поддерживает доступ к веб-камере.');
+function startCamera() {
+  const constraints = {
+    video: { facingMode: useFrontCamera ? "user" : "environment" }
+  };
+
+  // Останавливаем предыдущий поток, если он существует
+  if (currentStream) {
+    currentStream.getTracks().forEach(track => track.stop());
+  }
+
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      videoElement.srcObject = stream;
+      currentStream = stream;
+    })
+    .catch((error) => {
+      console.error('Ошибка доступа к камере:', error);
+    });
 }
+
+// Запуск камеры при загрузке страницы
+startCamera();
+
+// Переключение камеры при нажатии на кнопку
+document.getElementById('switchCamera').addEventListener('click', () => {
+  useFrontCamera = !useFrontCamera; // Переключаем камеру
+  startCamera(); // Перезапускаем камеру с новыми настройками
+});
 
 videoElement.addEventListener('click', function (event) {
   // Убеждаемся, что видео загружено
