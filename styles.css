@@ -163,7 +163,7 @@ body::after {
 
 @media (max-width: 768px) {
     .main--video{
-        width: 100%;
+        width: 80%;
     }
     .main--color-description{
         flex-flow: column;
